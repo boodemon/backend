@@ -1,0 +1,34 @@
+<div class="animated fadeIn">
+  <div class="card">
+      <div class="card-header">
+        <i class="fa fa-align-justify"></i> Simple Table
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Tel</th>
+              <th>Active</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of UserList;">
+              <td>{{ user.username }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.tel }}</td>
+              <td>{{ user.active }} <span class="badge badge-success">Active</span></td>
+              <td class="action">
+                  <a routerLink="/admin/{{ user.id }}/edit" class="text-primary"><i class="icon-note"></i></a>
+                  <a routerLink="/admin/{{ user.id }}/delete" class="text-danger"><i class="icon-trash"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
