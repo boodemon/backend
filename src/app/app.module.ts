@@ -20,13 +20,7 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 import { ForgotComponent } from './auth/forgot/forgot.component';
 import { OrdersComponent } from './orders/orders.component';
-import { FoodsComponent } from './foods/foods.component';
 import { ReportComponent } from './report/report.component';
-import { MemberComponent } from './member/member.component';
-import { AdminComponent } from './admin/admin.component';
-import { CategoryComponent } from './foods/category/category.component';
-import { RestourantComponent } from './foods/restourant/restourant.component';
-import { FoodComponent } from './foods/food/food.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { PaymentComponent } from './payment/payment.component';
 import { CheckComponent } from './auth/check/check.component';
@@ -35,6 +29,11 @@ import { CheckComponent } from './auth/check/check.component';
 import { UsersService } from './services/users.service';
 import { AuthService } from './services/auth.service';
 import { LogoutComponent } from './Auth/logout/logout.component';
+
+// Child module //
+import { AppUserModule } from './users/app-user.module';
+import { AppMemberModule } from './member/app-member.module';
+import { AppFoodModule } from './foods/app-food.module';
 
 
 
@@ -50,13 +49,7 @@ import { LogoutComponent } from './Auth/logout/logout.component';
     SimpleLayoutComponent,
     ForgotComponent,
     OrdersComponent,
-    FoodsComponent,
     ReportComponent,
-    MemberComponent,
-    AdminComponent,
-    CategoryComponent,
-    RestourantComponent,
-    FoodComponent,
     OrderDetailComponent,
     PaymentComponent,
     CheckComponent,
@@ -69,7 +62,10 @@ import { LogoutComponent } from './Auth/logout/logout.component';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    FormsModule
+    FormsModule,
+    AppUserModule,
+    AppMemberModule,
+    AppFoodModule
   ],
   providers: [
     {

@@ -78,7 +78,7 @@ $purple:  #6f42c1 !default;
 $pink:    #e83e8c !default;
 $red:     #dc3545 !default;
 $orange:  #fd7e14 !default;
-$yellow:  #ffc107 !default;
+$yellow:  #f8b318 !default;
 $green:   #28a745 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
@@ -157,6 +157,7 @@ $sizes: (
 
 $body-bg:       $white !default;
 $body-color:    $gray-900 !default;
+
 
 // Links
 //
@@ -317,6 +318,8 @@ $table-inverse-accent-bg:       rgba($white, .05) !default;
 $table-inverse-hover-bg:        rgba($white, .075) !default;
 $table-inverse-border-color:    lighten($gray-900, 7.5%) !default;
 $table-inverse-color:           $body-bg !default;
+
+$table-head-bg-yellow: $yellow !default;
 
 
 // Buttons

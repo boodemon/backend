@@ -5,13 +5,9 @@ import { ForgotComponent } from './auth/forgot/forgot.component';
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
-import { CategoryComponent } from './foods/category/category.component';
-import { RestourantComponent } from './foods/restourant/restourant.component';
-import { FoodComponent } from './foods/food/food.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ReportComponent } from './report/report.component';
 import { MemberComponent } from './member/member.component';
-import { AdminComponent } from './admin/admin.component';
 import { CheckComponent } from './auth/check/check.component';
 import { LogoutComponent } from './Auth/logout/logout.component';
 
@@ -63,36 +59,8 @@ const routes: Routes = [
         component:OrderDetailComponent
       },
       {
-        path: 'foods/category',
-        component:CategoryComponent,
-      },
-      {
-        path: 'foods/category/new',
-        component:CategoryComponent,
-      },
-      {
-        path: 'foods/category/:id/edit',
-        component:CategoryComponent,
-      },
-      {
-        path: 'foods/restourant',
-        component:RestourantComponent
-      },
-      {
-        path: 'foods/restourant/new',
-        component:RestourantComponent
-      },
-      {
-        path: 'foods/restourant/:id/edit',
-        component:RestourantComponent
-      },
-      {
-        path: 'foods/restourant/:id/delete',
-        component:RestourantComponent
-      },
-      {
-        path: 'foods/food',
-        component:FoodComponent
+        path: 'foods',
+        loadChildren:'./foods/app-food.module#AppFoodModule',
       },
       {
         path: 'payment',
@@ -104,11 +72,11 @@ const routes: Routes = [
       },
       {
         path: 'member',
-        component:MemberComponent
+        loadChildren:'./member/app-member.module#AppMemberModule'
       },
       {
-        path: 'admin',
-        component:AdminComponent
+        path:'users',
+        loadChildren:'./users/app-user.module#AppUserModule',
       },
       {
         path: 'logout',

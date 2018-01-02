@@ -16,12 +16,20 @@
   }
 
   thead th {
-    vertical-align: bottom;
+    vertical-align: middle;
     border-bottom: (2 * $table-border-width) solid $table-border-color;
+    text-align: center;
   }
 
   tbody + tbody {
     border-top: (2 * $table-border-width) solid $table-border-color;
+  }
+  tbody td.action{
+    text-align: right;
+  }
+  tbody td.action a{
+    padding:4px;
+    font-size: 14px;
   }
 
   .table {
@@ -38,6 +46,13 @@
   th,
   td {
     padding: $table-cell-padding-sm;
+  }
+}
+
+.table-data{
+  th{
+    background:$yellow;
+    color:$black;
   }
 }
 

@@ -7,7 +7,6 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
   private API = Base.API_URI; 
-  private token:string;
   private _token:_tokens;
   private user:any[];
   private row:any[];
@@ -20,9 +19,8 @@ export class AuthService {
 
   setToken(){
     return this.http.get( this.API + '/auth/token').subscribe((response) => {
-      let token = response;
-      if( (window.localStorage.getItem('_token') && window.localStorage.getItem('_token') != token._token) || !window.localStorage.getItem('_token') ){
-        window.localStorage.setItem('_token', token._token );
+      if( (window.localStorage.getItem('_token') && window.localStorage.getItem('_token') != response['_token']) || !window.localStorage.getItem('_token') ){
+        window.localStorage.setItem('_token', response['_token'] );
       }
     });
   }
@@ -33,22 +31,33 @@ export class AuthService {
   }
   
   postLogin(username:string,password:string,token:string){
-    return this.http.post<auth>( this.API + '/auth0',{username,password,token});
+    return this.http.post( this.API + '/auth/login',{username,password,token,_method:'POST'});
   }
 
   check(){
-      const user = window.localStorage.getItem('auth0');
+      
+      let user = window.localStorage.getItem('auth0');
       if( user !== null && user !== '' ){
         user = JSON.parse( user );
         console.log ('login finished' , user);
-        this.http.get(this.API +'/auth/check?username=' + user.username + '&token=' + user.token )
+        this.http.get(this.API +'/auth/check?username=' + user['username'] + '&token=' + user['token'] )
         .subscribe((response)=>{
-          if( response.result == 'false'){
+          if( response['result'] == 'false'){
             window.localStorage.removeItem('auth0');
           }
         });
       }
       return window.localStorage.getItem('auth0') ? true : false;
+  }
+
+  online(){
+    let user = window.localStorage.getItem('auth0');
+    console.log('online : ', user )
+    if( user !== null && user !== '' ){
+     return JSON.parse( user );
+    }else{ 
+      this.Router.navigateByUrl('login');
+    }
   }
 
 }

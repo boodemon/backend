@@ -8,28 +8,38 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor( private Auth:AuthService, private Router:Router) { }
+  constructor( private Auth:AuthService, private Router:Router) { 
+    if( Auth.check() === true ){
+      Router.navigateByUrl('dashboard');
+    }
+  }
   private _token:string = window.localStorage.getItem('_token');
   private username:string;
   private password:string;
   private responsding:string;
+  private result:boolean;
 
   ngOnInit() {
     this.Auth.setToken();
     this._token = window.localStorage.getItem('_token');
     console.log( 'token : ',  window.localStorage.getItem('_token') );
+
   }
 
   login(){
     console.log('click login username : ', this.username ,' password : ', this.password, ' token : ', this._token );
     this.Auth.postLogin( this.username, this.password, this._token).subscribe((response)=>{
-      console.log('response : ', response);
-      if( response.response == 'error'){
-        this.responsding = '<p class="text-danger">' + response.message + '</p>';
+          console.log('login result : ', response['auth'])
+      if( response['result'] == 'error'){
+        this.responsding = response['message'] ;
         this.username = '';
         this.password = '';
+        this.result = false;
       }else{
-          window.localStorage.setItem('auth0',JSON.stringify(response));
+          this.responsding = 'Login successful';
+          this.result = true;
+          let result = JSON.stringify(response['auth']);
+          window.localStorage.setItem('auth0',result); 
           this.Router.navigateByUrl('dashboard');
       }
     });

@@ -4,11 +4,13 @@
   <button class="navbar-toggler d-md-down-none" type="button" appSidebarToggler>&#9776;</button>
   <ul class="nav navbar-nav ml-auto">
     <li class="nav-item d-md-down-none">
-      <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
+      <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">0</span></a>
     </li>
     <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
       <a href class="nav-link dropdown-toggle" dropdownToggle (click)="false">
+        <!--
         <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="">
+        -->
         <span class="d-md-down-none">admin</span>
       </a>
       <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
@@ -58,7 +60,7 @@
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/member']"><i class="icon-people"></i> ข้อมูลสมาชิก</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin']"><i class="icon-user"></i> ผู้ดูแลระบบ</a>
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/users']"><i class="icon-user"></i> ผู้ดูแลระบบ</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/logout']"><i class="icon-logout"></i> ออกจากระบบ</a>

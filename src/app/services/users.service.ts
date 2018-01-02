@@ -13,7 +13,24 @@ export class UsersService {
 
   getAdmin(){
     console.log( 'url ', this.API_URI );
-    return this.http.get<Admins[]>( this.API_URI + '/admin');
+    return this.http.get( this.API_URI + '/admin');
+  }
+
+  getUser( userID:number ){
+    return this.http.get( this.API_URI + '/admin/' + userID );
+  }
+
+  addNew(data){
+    console.log(' post data ', data );
+    return this.http.post( this.API_URI + '/admin',data);
+  }
+
+  updateUser(id,data){
+    return this.http.post( this.API_URI + '/admin/' + id ,data);
+  }
+
+  oneDelete(id){
+    return this.http.post( this.API_URI +'/admin/' + id ,{'_method':'DELETE'});
   }
 
 }
